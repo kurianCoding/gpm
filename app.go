@@ -16,7 +16,8 @@ func main() {
 		resp, err := client.Get(url)
 		defer resp.Body.Close()
 		body, err := ioutil.ReadAll(resp.Body)
-		f, err := os.Create("/Users/kurian/Downloads/hello.zip")
+		err = os.Mkdir(fmt.Sprintf("%s/%s", os.Getenv("PWD"), "gds"), 0755)
+		f, err := os.Create(fmt.Sprintf("%s/%s", os.Getenv("PWD"), "gds/hello.zip"))
 		if err != nil {
 			panic(err)
 		}
